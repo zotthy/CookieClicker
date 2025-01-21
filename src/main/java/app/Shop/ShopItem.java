@@ -2,7 +2,6 @@ package app.Shop;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.jar.JarEntry;
 
 public class ShopItem extends JPanel {
     private String name;
@@ -43,6 +42,10 @@ public class ShopItem extends JPanel {
 
     public void setMultipler(double multipler) {
         this.multipler = multipler;
+    }
+
+    public void buyUpgrade(){
+
     }
 
     public JButton getButton() {
