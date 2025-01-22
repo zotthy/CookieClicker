@@ -1,5 +1,7 @@
 package app.Shop;
 
+import app.MyItemPanel.MyItem;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,49 +9,50 @@ public class ShopItem extends JPanel {
     private String name;
     private double price;
     private double multipler;
-    JButton button;
+    private JButton button;
 
-
-    public ShopItem(String name, double price, double multipler) {
+    public ShopItem(String name, double price, double multipler, MyItem myItem) {
         this.name = name;
         this.price = price;
         this.multipler = multipler;
+
         button = new JButton();
-        button.setPreferredSize(new Dimension(200,50));
-        button.setLocation(400,400);
-        button.setText(name);
+        button.setPreferredSize(new Dimension(200, 50));
+        updateButtonAfterBuyUpgrade();
+
+        button.addActionListener(e -> buyUpgrade(myItem));
     }
 
-    public String getName() {
-        return name;
+    public void buyUpgrade(MyItem item) {
+        if (item.getCookie() >= price) {
+            item.decreaseCookie(price);
+            price *= 1.3;
+            item.increaseMultiplier(multipler);
+            updateButtonAfterBuyUpgrade();
+        } else {
+            System.out.println("Not enough cookies!");
+            alert("Not enough cookies");
+        }
     }
 
-    public void setName(String name) {
-        this.name = name;
+    private void updateButtonAfterBuyUpgrade() {
+        button.setText(name + ": " + formatNumber(price));
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getMultipler() {
-        return multipler;
-    }
-
-    public void setMultipler(double multipler) {
-        this.multipler = multipler;
-    }
-
-    public void buyUpgrade(){
-
+    private String formatNumber(double number) {
+        if (number >= 1_000_000) {
+            return String.format("%.2fM", number / 1_000_000);
+        } else if (number >= 1_000) {
+            return String.format("%.2fk", number / 1_000);
+        } else {
+            return String.format("%.2f", number);
+        }
     }
 
     public JButton getButton() {
         return button;
     }
-
+    private void alert(String str){
+        JOptionPane.showMessageDialog(null, str);
+    }
 }
