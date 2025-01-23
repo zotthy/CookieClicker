@@ -1,6 +1,6 @@
 package app.Shop;
 
-import app.MyItemPanel.MyItem;
+import app.CookiePanelManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ public class ShopItem extends JPanel {
     private double multipler;
     private JButton button;
 
-    public ShopItem(String name, double price, double multipler, MyItem myItem) {
+    public ShopItem(String name, double price, double multipler, CookiePanelManager cookiePanelManager) {
         this.name = name;
         this.price = price;
         this.multipler = multipler;
@@ -20,10 +20,10 @@ public class ShopItem extends JPanel {
         button.setPreferredSize(new Dimension(200, 50));
         updateButtonAfterBuyUpgrade();
 
-        button.addActionListener(e -> buyUpgrade(myItem));
+        button.addActionListener(e -> buyUpgrade(cookiePanelManager));
     }
 
-    public void buyUpgrade(MyItem item) {
+    public void buyUpgrade(CookiePanelManager item) {
         if (item.getCookie() >= price) {
             item.decreaseCookie(price);
             price *= 1.3;
