@@ -1,6 +1,7 @@
 package app.Shop;
 
 import app.CookiePanelManager;
+import app.MyItemPanel.Inventory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,25 +10,30 @@ public class ShopItem extends JPanel {
     private String name;
     private double price;
     private double multipler;
+    private int countUpgrade = 0;
     private JButton button;
+    private Inventory inventory;
 
-    public ShopItem(String name, double price, double multipler, CookiePanelManager cookiePanelManager) {
+    public ShopItem(String name, double price, double multipler, CookiePanelManager cookiePanelManager,Inventory inventory) {
         this.name = name;
         this.price = price;
         this.multipler = multipler;
-
+        this.inventory = inventory;
         button = new JButton();
         button.setPreferredSize(new Dimension(200, 50));
         updateButtonAfterBuyUpgrade();
-
         button.addActionListener(e -> buyUpgrade(cookiePanelManager));
     }
 
-    public void buyUpgrade(CookiePanelManager item) {
+    private void buyUpgrade(CookiePanelManager item) {
         if (item.getCookie() >= price) {
             item.decreaseCookie(price);
             price *= 1.3;
+            countUpgrade++;
+            System.out.println("------>" + name);
+            System.out.println(countUpgrade);
             item.increaseMultiplier(multipler);
+            inventory.addItem(name,1);
             updateButtonAfterBuyUpgrade();
         } else {
             System.out.println("Not enough cookies!");
@@ -52,7 +58,16 @@ public class ShopItem extends JPanel {
     public JButton getButton() {
         return button;
     }
-    private void alert(String str){
+
+    private void alert(String str) {
         JOptionPane.showMessageDialog(null, str);
+    }
+
+    public int getCountUpgrade() {
+        return countUpgrade;
+    }
+
+    public void setCountUpgrade(int countUpgrade) {
+        this.countUpgrade = countUpgrade;
     }
 }

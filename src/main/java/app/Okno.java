@@ -1,5 +1,6 @@
 package app;
 
+import app.MyItemPanel.Inventory;
 import app.Shop.Shop;
 import app.panelCookie.AnimationPanel;
 
@@ -19,12 +20,15 @@ public class Okno extends JFrame {
 
         AnimationPanel animationPanel = new AnimationPanel(RAIN_AMOUNT);
 
-        CookiePanelManager cookiePanelManager = new CookiePanelManager();
+        Inventory inventory = new Inventory();
+        CookiePanelManager cookiePanelManager = new CookiePanelManager(inventory);
+        Shop shop = new Shop(cookiePanelManager, inventory);
+
+
         JPanel myItemPanel = new JPanel(new BorderLayout());
         myItemPanel.add(cookiePanelManager, BorderLayout.CENTER);
         myItemPanel.setBackground(Color.LIGHT_GRAY);
 
-        Shop shop = new Shop(cookiePanelManager);
 
         JSplitPane leftSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, animationPanel, myItemPanel);
         leftSplitPane.setDividerLocation((int) (WINDOW_WIDTH * 0.33));
