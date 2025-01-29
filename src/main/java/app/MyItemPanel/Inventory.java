@@ -1,6 +1,7 @@
 package app.MyItemPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 
 public class Inventory extends JPanel{
@@ -8,8 +9,8 @@ public class Inventory extends JPanel{
 
 
     public Inventory() {
-        itemHashMap.put("tests",new Item("test",12));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setBackground(Color.LIGHT_GRAY);
     }
 
     public void addItem(String name, int count) {

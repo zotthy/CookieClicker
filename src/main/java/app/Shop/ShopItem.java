@@ -12,15 +12,17 @@ public class ShopItem extends JPanel {
     private double multipler;
     private int countUpgrade = 0;
     private JButton button;
+    private Inventory inventory;
 
-    public ShopItem(String name, double price, double multipler, CookiePanelManager cookiePanelManager) {
+    public ShopItem(String name, double price, double multipler, CookiePanelManager cookiePanelManager,Inventory inventory) {
         this.name = name;
         this.price = price;
         this.multipler = multipler;
+        this.inventory = inventory;
         button = new JButton();
         button.setPreferredSize(new Dimension(200, 50));
         updateButtonAfterBuyUpgrade();
-        button.addActionListener(e -> buyUpgrade(cookiePanelManager)));
+        button.addActionListener(e -> buyUpgrade(cookiePanelManager));
     }
 
     private void buyUpgrade(CookiePanelManager item) {
@@ -31,6 +33,7 @@ public class ShopItem extends JPanel {
             System.out.println("------>" + name);
             System.out.println(countUpgrade);
             item.increaseMultiplier(multipler);
+            inventory.addItem(name,1);
             updateButtonAfterBuyUpgrade();
         } else {
             System.out.println("Not enough cookies!");

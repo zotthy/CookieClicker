@@ -12,8 +12,9 @@ public class CookiePanelManager extends JPanel {
     private double cookiePer = 1.05;
     private JLabel quantitiCookieDisplay;
     private JLabel multiplerCookieDisplay;
+    private Inventory inventory;
 
-    public CookiePanelManager() {
+    public CookiePanelManager(Inventory inventory) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         quantitiCookieDisplay = new JLabel("Cookies: " + formatNumber(cookie));
         quantitiCookieDisplay.setPreferredSize(new Dimension(200, 50));
@@ -24,6 +25,7 @@ public class CookiePanelManager extends JPanel {
         add(quantitiCookieDisplay);
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(multiplerCookieDisplay);
+        add(inventory);
 
         Timer timer = new Timer(1000, e -> {
             cookie += cookiePer;

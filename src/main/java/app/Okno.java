@@ -20,8 +20,9 @@ public class Okno extends JFrame {
 
         AnimationPanel animationPanel = new AnimationPanel(RAIN_AMOUNT);
 
-        CookiePanelManager cookiePanelManager = new CookiePanelManager();
-        Shop shop = new Shop(cookiePanelManager);
+        Inventory inventory = new Inventory();
+        CookiePanelManager cookiePanelManager = new CookiePanelManager(inventory);
+        Shop shop = new Shop(cookiePanelManager, inventory);
 
 
         JPanel myItemPanel = new JPanel(new BorderLayout());
