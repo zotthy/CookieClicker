@@ -6,31 +6,25 @@ import java.awt.*;
 public class Item extends JPanel {
     private String name;
     private int count;
-    private JLabel pole;
+    private JLabel label;
 
-    public Item(String name, int count){
+    public Item(String name, int count) {
         this.name = name;
         this.count = count;
-        pole = new JLabel();
-        pole.setPreferredSize(new Dimension(200, 50));
-        pole.setBackground(Color.red);
-        pole.setText("ds");
-        add(pole);
-    }
-    public int getCount() {
-        return count;
+        this.label = new JLabel(name + ": " + count);
+        add(label);
     }
 
     public void setCount(int count) {
         this.count = count;
+        label.setText(name + ": " + count);
     }
 
-    public JLabel getPole() {
-        return pole;
+    public int getCount() {
+        return count;
     }
 
-    public void setPole(JLabel pole) {
-        this.pole = pole;
+    public String getName() {
+        return name;
     }
 }
-

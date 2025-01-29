@@ -1,8 +1,9 @@
 package app;
 
+import app.MyItemPanel.Inventory;
+
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 
 public class CookiePanelManager extends JPanel {
 
@@ -13,24 +14,16 @@ public class CookiePanelManager extends JPanel {
     private JLabel multiplerCookieDisplay;
 
     public CookiePanelManager() {
-
-
-
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
         quantitiCookieDisplay = new JLabel("Cookies: " + formatNumber(cookie));
         quantitiCookieDisplay.setPreferredSize(new Dimension(200, 50));
         quantitiCookieDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         multiplerCookieDisplay = new JLabel("Multiplier: " + formatNumber(multiplerCookie));
         multiplerCookieDisplay.setPreferredSize(new Dimension(200, 50));
         multiplerCookieDisplay.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         add(quantitiCookieDisplay);
         add(Box.createRigidArea(new Dimension(0, 10)));
         add(multiplerCookieDisplay);
-
-
 
         Timer timer = new Timer(1000, e -> {
             cookie += cookiePer;
@@ -64,7 +57,7 @@ public class CookiePanelManager extends JPanel {
     }
 
     public void increaseCookie() {
-        cookie = cookie + 1;
+        cookie = cookie + 10000;
         updateDisplay();
     }
     public void decreaseCookie(double amount) {
