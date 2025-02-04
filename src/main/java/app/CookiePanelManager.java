@@ -59,7 +59,7 @@ public class CookiePanelManager extends JPanel {
     }
 
     public void increaseCookie() {
-        cookie = cookie + 10000;
+        cookie = cookie + 1;
         updateDisplay();
     }
     public void decreaseCookie(double amount) {

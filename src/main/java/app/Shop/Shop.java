@@ -11,7 +11,7 @@ public class Shop extends JPanel {
     public Shop(CookiePanelManager cookiePanelManager,Inventory inventory) {
         this.cookiePanelManager = cookiePanelManager;
         this.inventory = inventory;
-        addItem("Test",100,3.00);
+        addItem("Test",1,3.00);
         addItem("test2",200,3.50);
         addItem("test3",600,3.0);
         addItem("test4",400,2.0);
@@ -19,7 +19,6 @@ public class Shop extends JPanel {
 
     public void addItem(String name, double price, double multipler) {
         ShopItem shopItem = new ShopItem(name, price, multipler, cookiePanelManager, inventory);
-        //shopItem.getButton().addActionListener(e->shopItem.buyUpgrade(cookiePanelManager));
         add(shopItem.getButton());
     }
 }
