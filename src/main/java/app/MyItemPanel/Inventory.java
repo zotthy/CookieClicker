@@ -25,10 +25,12 @@ public class Inventory extends JPanel{
         revalidate();
         repaint();
     }
-    public void updateItem(String name, int count) {
-        if (itemHashMap.containsKey(name)) {
-            Item item = itemHashMap.get(name);
-            item.setCount(count);
-        }
+
+    public HashMap<String, Item> getItemHashMap() {
+        return itemHashMap;
+    }
+
+    public void setItemHashMap(HashMap<String, Item> itemHashMap) {
+        this.itemHashMap = itemHashMap;
     }
 }

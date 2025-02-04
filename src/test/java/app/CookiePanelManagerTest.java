@@ -12,7 +12,7 @@ class CookiePanelManagerTest {
 
     @BeforeEach
     void setUp() {
-        inventory = new Inventory(); // Assuming Inventory has a default constructor
+        inventory = new Inventory();
         cookiePanelManager = new CookiePanelManager(inventory);
     }
 
