@@ -25,7 +25,7 @@ public class ShopItem extends JPanel {
         button.addActionListener(e -> buyUpgrade(cookiePanelManager));
     }
 
-    private void buyUpgrade(CookiePanelManager item) {
+    public void buyUpgrade(CookiePanelManager item) {
         if (item.getCookie() >= price) {
             item.decreaseCookie(price);
             price *= 1.3;
