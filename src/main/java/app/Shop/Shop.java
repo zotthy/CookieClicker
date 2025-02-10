@@ -11,10 +11,14 @@ public class Shop extends JPanel {
     public Shop(CookiePanelManager cookiePanelManager,Inventory inventory) {
         this.cookiePanelManager = cookiePanelManager;
         this.inventory = inventory;
-        addItem("Test",1,3.00);
-        addItem("test2",200,3.50);
-        addItem("test3",600,3.0);
-        addItem("test4",400,2.0);
+        addItem("Worker",8.0,0.01);
+        addItem("Farm",13.50,0.09);
+        addItem("Grandma",300,0.3);
+        addItem("Mine",100.0,0.15);
+        addItem("Factory",200.0,0.25);
+        addItem("Bank",3000,0.2);
+        addItem("Temple",50000.0,0.5);
+        addItem("Portal",70000.0,1.0);
     }
 
     public void addItem(String name, double price, double multipler) {

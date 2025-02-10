@@ -9,7 +9,8 @@ import java.util.Random;
 public class AnimationPanel extends JPanel implements ActionListener {
     private final DropRain[] rain;
 
-    public AnimationPanel(int rainAmount) {
+    public AnimationPanel() {
+        int rainAmount = 12;
         rain = new DropRain[rainAmount];
         setPreferredSize(new Dimension(800, 600));
         createRain();
@@ -25,7 +26,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics gfx) {
         super.paintComponent(gfx);
-        gfx.setColor(Color.BLACK);
+        gfx.setColor(Color.decode("#a94b00"));
         gfx.fillRect(0, 0, getWidth(), getHeight());
 
         for (DropRain rainDrop : rain) {

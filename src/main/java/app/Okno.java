@@ -9,16 +9,16 @@ import java.awt.*;
 
 public class Okno extends JFrame {
     private static final int WINDOW_WIDTH = 1000;
-    private static final int WINDOW_HEIGHT = 700;
-    private static final int RAIN_AMOUNT = 12;
+    private static final int WINDOW_HEIGHT = 500;
 
     public Okno() {
         super("Cookie Clicker");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
-        AnimationPanel animationPanel = new AnimationPanel(RAIN_AMOUNT);
+        AnimationPanel animationPanel = new AnimationPanel();
 
         Inventory inventory = new Inventory();
         CookiePanelManager cookiePanelManager = new CookiePanelManager(inventory);
@@ -27,7 +27,6 @@ public class Okno extends JFrame {
 
         JPanel myItemPanel = new JPanel(new BorderLayout());
         myItemPanel.add(cookiePanelManager, BorderLayout.CENTER);
-        myItemPanel.setBackground(Color.LIGHT_GRAY);
 
 
         JSplitPane leftSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, animationPanel, myItemPanel);
@@ -44,6 +43,7 @@ public class Okno extends JFrame {
 
         animationPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
         animationPanel.add(cookieButton);
+
 
         add(mainSplitPane, BorderLayout.CENTER);
 

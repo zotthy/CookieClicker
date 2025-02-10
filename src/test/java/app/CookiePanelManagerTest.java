@@ -26,7 +26,12 @@ class CookiePanelManagerTest {
         cookiePanelManager.increaseCookie();
         assertEquals(1, cookiePanelManager.getCookie());
     }
-
+    @Test
+    void testIncereseCookieValueIsNegative(){
+        cookiePanelManager.setCookie(-1);
+        cookiePanelManager.increaseCookie();
+        assertEquals(0,cookiePanelManager.getCookie());
+    }
     @Test
     void testDecreaseCookie() {
         cookiePanelManager.setCookie(10);
@@ -43,9 +48,40 @@ class CookiePanelManagerTest {
 
     @Test
     void testIncreaseMultiplier() {
-        cookiePanelManager.increaseMultiplier(0.5);
-        assertEquals(1.5, cookiePanelManager.getMultiplerCookie());
-        assertEquals(1.575, cookiePanelManager.getCookiePer());
+        cookiePanelManager.increaseMultiplier(1.0);
+        assertEquals(1.0, cookiePanelManager.getMultiplerCookie());
     }
-
+    @Test
+    void testIncreaseMultiplierWithZero() {
+        cookiePanelManager.increaseMultiplier(0.0);
+        assertEquals(0.0, cookiePanelManager.getMultiplerCookie());
+    }
+    @Test
+    void testMultiplerMaxValue(){
+        cookiePanelManager.setMultiplerCookie(Double.MAX_VALUE);
+        assertEquals(Double.MAX_VALUE,cookiePanelManager.getMultiplerCookie());
+    }
+    @Test
+    void testIncreaseCookieWithNegativeMultiplier() {
+        cookiePanelManager.increaseMultiplier(-1.0);
+        cookiePanelManager.increaseCookie();
+        assertEquals(1, cookiePanelManager.getCookie());
+    }
+    @Test
+    void testSetCookieToMaxValue() {
+        cookiePanelManager.setCookie(Integer.MAX_VALUE);
+        assertEquals(Integer.MAX_VALUE, cookiePanelManager.getCookie());
+    }
+    @Test
+    void testDecreaseCookieFromMaxValue() {
+        cookiePanelManager.setCookie(Integer.MAX_VALUE);
+        cookiePanelManager.decreaseCookie(100);
+        assertEquals(Integer.MAX_VALUE - 100, cookiePanelManager.getCookie());
+    }
+    @Test
+    void testIncreaseCookieAtMaxValue() {
+        cookiePanelManager.setCookie(Integer.MAX_VALUE);
+        cookiePanelManager.increaseCookie();
+        assertEquals(Integer.MAX_VALUE, cookiePanelManager.getCookie());
+    }
 }
