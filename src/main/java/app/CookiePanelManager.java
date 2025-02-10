@@ -8,12 +8,10 @@ import java.awt.*;
 public class CookiePanelManager extends JPanel {
 
     private double cookie = 0;
-    private double multiplerCookie = 1.00;
-    private double cookiePer = 1.05;
+    private double multiplerCookie = 0.00;
+    private double cookiePer = 0.00;
     private JLabel quantitiCookieDisplay;
     private JLabel multiplerCookieDisplay;
-    private Inventory inventory;
-
     public CookiePanelManager(Inventory inventory) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         quantitiCookieDisplay = new JLabel("Cookies: " + formatNumber(cookie));

@@ -7,8 +7,8 @@ import app.MyItemPanel.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +21,7 @@ class ShopItemTest {
     void setUp() {
         inventory = new Inventory();
         cookiePanelManager = new CookiePanelManager(inventory);
-        shopItem = new ShopItem("test", 100, 1.0, cookiePanelManager, inventory);
+        shopItem = new ShopItem("test", 100, 2.0, cookiePanelManager, inventory);
     }
 
     @Test
@@ -71,5 +71,17 @@ class ShopItemTest {
         HashMap<String, Item> itemHashMap = inventory.getItemHashMap();
         assertTrue(itemHashMap.containsKey("test"));
         assertEquals(3, itemHashMap.get("test").getCount());
+    }
+    @Test
+    public void testAddItemToInventoryUi(){
+        cookiePanelManager.setCookie(300.0);
+        inventory.addItem("test", 1);
+
+        shopItem.buyUpgrade(cookiePanelManager);
+
+        Component components[] = inventory.getComponents();
+
+        assertTrue(components[0] instanceof Item);
+        assertEquals(1,components.length);
     }
 }

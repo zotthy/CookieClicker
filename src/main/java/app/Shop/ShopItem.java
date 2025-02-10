@@ -63,10 +63,6 @@ public class ShopItem extends JPanel {
         return button;
     }
 
-    private void alert(String str) {
-        JOptionPane.showMessageDialog(null, str);
-    }
-
     public int getCountUpgrade() {
         return countUpgrade;
     }
