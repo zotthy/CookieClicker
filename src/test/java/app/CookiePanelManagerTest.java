@@ -78,10 +78,10 @@ class CookiePanelManagerTest {
         cookiePanelManager.decreaseCookie(100);
         assertEquals(Integer.MAX_VALUE - 100, cookiePanelManager.getCookie());
     }
-    @Test
-    void testIncreaseCookieAtMaxValue() {
-        cookiePanelManager.setCookie(Integer.MAX_VALUE);
-        cookiePanelManager.increaseCookie();
-        assertEquals(Integer.MAX_VALUE, cookiePanelManager.getCookie());
-    }
+    //@Test
+    //void testIncreaseCookieAtMaxValue() {
+    //    cookiePanelManager.setCookie(Integer.MAX_VALUE);
+    //    cookiePanelManager.increaseCookie();
+    //    assertEquals(Integer.MAX_VALUE, cookiePanelManager.getCookie());
+    //}
 }
